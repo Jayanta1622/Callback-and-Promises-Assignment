@@ -1,0 +1,17 @@
+const apiUrl = "https://jsonplaceholder.typicode.com/posts/123456789";
+fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log("Data from the API:", data);
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    const errorMessage = document.createElement("p");
+    errorMessage.textContent = "Error: Unable to retrieve data from the API.";
+    document.body.appendChild(errorMessage);
+  });
